@@ -1,0 +1,32 @@
+; Ex 2.3
+
+(define (make-rectangle p1 p2 p3 p4)
+  (cons p1 p2 p3 p4))
+
+(define (rectangle-to-point n rectangle)
+  (if (<= n 1)
+      (car rectangle)
+      (cdr (rectangle-to-point (- n 1) rectangle))))
+
+(define (rectangle-to-4segment rectangle)
+  (cons (make-segment (rectangle-to-point 1 rectangle) (rectangle-to-point 2 rectangle))
+        (make-segment (rectangle-to-point 2 rectangle) (rectangle-to-point 3 rectangle))
+        (make-segment (rectangle-to-point 3 rectangle) (rectangle-to-point 4 rectangle))
+        (make-segment (rectangle-to-point 4 rectangle) (rectangle-to-point 1 rectangle))))
+
+(define (rectangle-to-segment n rectangle)
+  (make-segment (rectangle-to-point n rectangle) (rectangle-to-point (next n) rectangle)))
+
+(define (next n)
+  (if (>= n 4)
+      1
+      (+ n 1)))
+
+(define (length segment)
+  (sqrt (square (x-distance segment))
+        (square (y-distance segment))))
+
+(define)
+
+(define (permeter rectangle)
+  ())
