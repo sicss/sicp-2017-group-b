@@ -1,0 +1,4 @@
+#lang racket
+(define (make-rat2 a b) 
+(cond ((>= (* a b) 0) (cons (abs a) (abs b))
+((< (* a b) 0) (cons (- (abs a)) (abs b))

@@ -1,0 +1,6 @@
+#lang racket
+(define (f x) (f2 2 1 0 x))
+
+(define (f2 a b c n)
+  (cond ((= n 0) c)
+        (else (f2 (+ a (* 2 b) (* 3 c)) a b (- n 1)))))

@@ -1,0 +1,5 @@
+#lang racket
+(define (pascal i j)
+  (cond ((< i j) (display "error"))
+        ((or (= i 1) (= j 1) (= j i)) 1)
+        (else (+ (pascal (- i 1) (- j 1)) (pascal (- i 1) j)))))
