@@ -119,7 +119,7 @@
 ; Ex 2.5 --DOING
 
 (define (exp base x)
-  ((if (= x 0))
+  (if (= x 0)
    1
    (* base (exp base (- x 1)))))
 
@@ -128,5 +128,11 @@
      (exp 3 b)))
 
 (define (new-car2 z)
-  (if (= 0 (mod (/ z 2) 2))
-      ()))
+  (if (= 0 (modulo z 2))
+      (+ 1 (new-car2 (/ z 2)))
+      0))
+
+(define (new-cdr2 z)
+  (if (= 0 (modulo z 3))
+      (+ 1 (new-cdr2 (/ z 3)))
+      0))
