@@ -136,3 +136,39 @@
   (if (= 0 (modulo z 3))
       (+ 1 (new-cdr2 (/ z 3)))
       0))
+
+; Ex 2.6
+
+#|
+(add-1 zero)
+(add-1 (λ (f) (λ (x) x)))
+(λ (f)
+   (λ (x)
+      (f (((λ (f)
+              (λ (x) x)) f) x))))
+
+(add-1 (λ (f) (λ (x) x)))
+(λ (f)
+  (λ (x)
+    (f (((λ (f)
+           (λ (x)
+             x)) f) x))))
+
+(λ (f)
+  (λ (x)
+    (f ((λ (x) x) x))))
+
+(λ (f)
+  (λ (x)
+    (f x)))
+|#
+
+(define zero (λ (f) (λ (x) x)))
+(define (suc n)
+  (λ (f) (λ (x) (f ((n f))))))
+(define one (λ (f) (λ (x) (f x))))
+(define two (λ (f) (λ (x) (f (f x)))))
+(define (add m n)
+  (if (<= n 0)
+      m
+      (suc (add m (- n 1)))))
